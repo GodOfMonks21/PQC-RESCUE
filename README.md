@@ -26,6 +26,7 @@ From the `ground` directory, create an update:
 python3 package_update.py ./payload/payload.bin 1
 ```
 
+This creates `update.tar.gz` with includes the payload, manifest, and ML-DSA-65 signature.
 Send it to the Pi:
 
 ```bash
@@ -33,7 +34,7 @@ Send it to the Pi:
 ```
 
 The script uploads the package to this specific location on the Pi:
-`/var/lib/pqc-rescue/incoming/update.tar.gz`
+`/var/lib/pqc-rescue/incoming/update.tar.gz`.
 
 On the Pi, process the received update:
 
