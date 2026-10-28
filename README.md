@@ -19,7 +19,7 @@ The ground laptop also needs the SSH private key used to connect to the Pi:
 These private keys are not included in this repository. Obtain them separately and never commit them to Git.
 
 ## Basic workflow
-The package update script takes two arguments: `payload`, `file version`
+The package update script takes two arguments: `payload`, `file version`.
 From the `ground` directory, create an update:
 
 ```bash
