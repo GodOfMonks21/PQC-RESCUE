@@ -1,0 +1,96 @@
+#needed for the wowki circuit diagram only
+
+{
+  "version": 1,
+  "author": "RESCUE learning simulation",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-2",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-clock-generator",
+      "id": "pi_heartbeat",
+      "top": 0,
+      "left": -260,
+      "attrs": {
+        "frequency": "2"
+      }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "pi_state",
+      "top": 100,
+      "left": -210,
+      "attrs": {
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "hb_resistor",
+      "top": 160,
+      "left": -150,
+      "attrs": {
+        "value": "1000"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "fan",
+      "top": 0,
+      "left": 230,
+      "attrs": {
+        "color": "green",
+        "label": "FAN ENABLE"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "fan_resistor",
+      "top": 100,
+      "left": 220,
+      "attrs": {
+        "value": "330"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "fault",
+      "top": 180,
+      "left": 230,
+      "attrs": {
+        "color": "red",
+        "label": "FAULT"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "fault_resistor",
+      "top": 280,
+      "left": 220,
+      "attrs": {
+        "value": "330"
+      }
+    }
+  ],
+  "connections": [
+    ["pi_heartbeat:CLK", "pi_state:1", "blue", []],
+    ["pi_state:3", "pico:GND.1", "black", []],
+    ["pi_state:2", "hb_resistor:1", "blue", []],
+    ["hb_resistor:2", "pico:GP16", "blue", []],
+
+    ["pico:GP15", "fan_resistor:1", "green", []],
+    ["fan_resistor:2", "fan:A", "green", []],
+    ["fan:C", "pico:GND.1", "black", []],
+
+    ["pico:GP17", "fault_resistor:1", "red", []],
+    ["fault_resistor:2", "fault:A", "red", []],
+    ["fault:C", "pico:GND.1", "black", []]
+  ],
+  "dependencies": {}
+}
